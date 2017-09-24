@@ -1,8 +1,11 @@
 (function(){
 	const divHook = document.getElementById('uxdev-container');
-	const url = 'http://homestead.app/api/test/4';
+	const url = 'http://homestead.app/api/test/1';
+	const postUrl = 'http://homestead.app/api/test';
 	const testId = 4;
 	let dataTest = {};
+
+	let userId = getSessionId();
 
 	let state = {
 		started:false,
@@ -52,6 +55,7 @@
 
 	function createTask(id, startTime){
 		return {
+			userId: userId,
 			testId: testId,
 			taskId: id,
 			startTime:startTime,
@@ -63,13 +67,23 @@
 
 	function createQuestion(id, response){
 		return {
+			userId: userId,
 			testId: testId,
 			questionId: id,
 			response: response
 		}
 	}
 
-
+	function getSessionId(){
+		let temp;
+		if(window.localStorage.getItem('uxdevid')){
+			temp = window.localStorage.getItem('uxdevid');
+		}else{
+			temp = 'test_user_id' + (+new Date());
+			window.localStorage.setItem('uxdevid', temp);
+		}
+		return temp;
+	}
 
 	function persistState(){
 		window.localStorage.setItem('uxdevstate', JSON.stringify(state));
@@ -124,34 +138,8 @@
 					<button style="background:#2877AE; float:right; width:25%; height:30px; margin-right:20px; border:none;outline: none;" onClick="renderStaticHtmlInstructions(2)">Continue</button
 				</div>
 			`;
-		}else if(step === 2){
-			divHook.innerHTML = `
-				<div style="width:8%; height:12%; border: solid 2px #BFBFBF; border-radius: 50%; position: absolute; top: 10%; left: 90%;"> 
-					<p style="font-size:1.8em; text-align:center;"> i </p>
-				</div>
-				<div style="width: 0; height: 0; border-style: solid; border-width: 40px 0 40px 63px; border-color: transparent transparent transparent #BFBFBF; position: absolute; top: 11%; left: 85%;">
-				</div>
-				<div style="width:20%; height: 200px; background:#D8D8D8; position:absolute; top:11%; left:65%; ">
-					<p style="font-size:1em; padding:20px; text-align:center;"> If you need to read the task instructions again - </p>
-					<p style="font-size:1em; padding:20px; text-align:center;"> Please press the Information button. </p>
-					<button style="background:#2877AE; float:right; width:25%; height:30px; margin-right:10px; margin-top:-36px; border:none;outline: none;" onClick="renderStaticHtmlInstructions(3)">Continue</button
-				</div>
-			`;
-		}else if(step === 3){ 
-			divHook.innerHTML = `
-				<div style="width:8%; height:12%; border: solid 2px #BFBFBF; border-radius: 50%; position: absolute; top: 70%; left: 90%;">
-					<p style="font-size:1.8em; text-align:center;"> X </p>
-				</div>
-				<div style="width: 0; height: 0; border-style: solid; border-width: 40px 0 40px 63px; border-color: transparent transparent transparent #BFBFBF; position: absolute; top: 71%; left: 85%;">
-				</div>
-				<div style="width:20%; height: 200px; background:#D8D8D8; position:absolute; top:71%; left:65%; ">
-					<p style="font-size:1em; padding:20px; text-align:center;"> If you need to quit the test while doing a task - </p>
-					<p style="font-size:1em; padding:20px; text-align:center;"> Please press the Quit button. </p>
-					<button style="background:#2877AE; float:right; width:25%; height:30px; margin-right:10px; margin-top:-19px; border:none;outline: none;" onClick="renderStaticHtmlInstructions(4)">Continue</button
-				</div>
 
-			`;
-		}else if(step === 4){
+		}else if(step === 2){
 			divHook.innerHTML = `
 				<div style="width:40%; height:180px; background:#D8D8D8; position: absolute; top: 20%; left: 30%;"> 
 					<p style="font-size:1.5em; padding:20px; text-align:center;"> Are you ready to start the UX test?</p>
@@ -280,11 +268,20 @@
 				taskRoute(container);
 			else
 				taskRun();
-		}else if(dataTest.tasks.length > 0 && state.questionsLeft > 0){
+		}else if(dataTest.questions.length > 0 && state.questionsLeft > 0){
 			questionRoute(container);
+		}else if(dataTest.tasks.length > 0 || dataTest.questions.length > 0){
+			container.innerHTML = "Test finished thank you!!";
+			fetch(postUrl, {
+			  method: 'POST',
+			  body: JSON.stringify(results)
+			}).then(res=>res.json())
+			  .then(res => {
+			  	window.localStorage.removeItem('uxdevstate');
+			  	window.localStorage.removeItem('uxdevresults');
+			  });
 		}else{
-			container.innerHTML = "";
-			alert('test is finished!');
+			throw new Error('No test data');
 		}
 	}
 
