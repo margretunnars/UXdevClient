@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> The As and When Foundation </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+  <style>
+      /**********************************
+      UNIVERSAL
+      ***********************************/
+
+      /* unvisited link */
+      a:link {
+      text-decoration: none;
+      color: black;
+      }
+
+      /* visited link */
+      a:visited{
+      text-decoration: none;
+      font-family: 'Bree Serif', serif;
+      color: black;
+      }
+
+      /* mouse over link */
+      a:hover {
+      text-decoration: none;
+      font-family: 'Bree Serif', serif;
+      }
+
+      /* selected link */
+      a:active {
+      text-decoration: none;
+      font-family: 'Bree Serif', serif;
+      color: black;
+      }
+
+      /**********************************
+      HEADER 
+      ***********************************/
+
+      .main-header {
+      background-color: white;
+      }
+
+      .main-header h1 {
+      font-size: 2em;
+      font-style: bold;
+      font-family: 'Bree Serif', serif;
+      color: #FF5733;
+
+      padding-left: 20px;
+      margin: 0;
+      text-align:left;
+      }
+
+      .main-header h2 {
+      font-size: 1em;
+      font-style: normal;
+      font-family: 'Bree Serif', serif;
+      color: black;
+
+      padding-left: 50px;
+      text-align: left;
+      }
+
+      .login-header{
+      font-size: 1.3em;
+      font-style: normal;
+      font-family: 'Bree Serif', serif;
+      }
+
+      #top-border {
+      border-top: 2px solid #FF5733;
+      }
+
+      .main-header img{
+      margin-top: 10px;
+      }
+
+      .login-header {
+      text-align: right;
+      padding-right: 20px;
+      display: inline;
+        position: absolute;
+        top:0;
+        right:0;
+      }
+
+      .material-icons.md-36 {
+      font-size: 36px; 
+      }
+
+      #account-dropdown-loggedin{
+      position: absolute;
+      top:0;
+      right:0;
+      padding-top:15px;
+      padding-right:20px;
+      }
+
+      #account-loggedin {
+      position: absolute;
+      top:0;
+      right:0;
+      padding-top:5px;
+      padding-right:40px;
+      }
+
+      #notification-loggedin {
+      position: absolute;
+        top:0;
+      padding-top:6px;
+      padding-left: 1170px;
+      }
+
+      #email-loggedin {
+        position: absolute;
+        top:0;
+        padding-top:5px;
+      padding-left: 1120px;
+      }
+
+      #home-loggedin{
+      position: absolute;
+        top:0;
+        padding-top:5px;
+      padding-left: 1075px;
+      }
+
+      .find-contribution {
+      display: inline;
+      text-align: center;
+      width: 50%;
+      margin-right: -5px;
+      float: left;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      background-color: #FF5733;
+      }
+
+      .find-contribution a{
+      color: white;
+      text-shadow: 1px 1px #F9AC8F;
+
+      font-family: 'Bree Serif', serif;
+      font-size: 1.5em;
+      font-style: normal;
+      }
+
+      .find-contribution img{
+       margin-right: 10px;
+      }
+
+      .create-contribution {
+      display: inline;
+      text-align: center;
+      width: 50%;
+      margin-left: -5px;
+      float: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      background-color: #FF5733;
+      }
+
+      .create-contribution a{
+      color: white;
+      text-shadow: 1px 1px #F9AC8F;
+
+      font-family: 'Bree Serif', serif;
+      font-size: 1.5em;
+      font-style: normal;
+      }
+
+      .create-contribution img{
+      margin-right: 10px;
+      }
+
+      .orange-header-loggedin {
+      width: 100%;
+      height: 50px;
+      background-color: #FF5733;
+      }
+
+      /**********************************
+      SECTION 
+      ***********************************/
+
+      /*----universal---*/
+
+      .wrapper {
+      width:70%;
+      margin:0 auto
+      }
+
+      /*----index----*/
+
+      #search-box,
+      #search-box-logged {
+      background-color: #474747;
+      width: 550px;
+      height: 50px;
+      padding: 20px;
+      margin: 100px auto 50px;
+      overflow: hidden;
+      border: 1px solid #3a3a3a;
+      }
+
+      #search-box-logged {
+      margin-top:10px;
+      } 
+
+      #search-bar {
+      padding: 8px 12px;
+      height: 30px;
+      width: 400px;
+      border: 0;
+      background-color: white;
+      float:left;
+      font: normal 15px'Bree Serif', serif;
+      border-radius: 5px;
+      }
+
+      #search-button{
+      border: 0;
+        background: none;
+        margin-left: -37px;
+        margin-top: 4px;
+        cursor: pointer;
+        padding-top:6px;
+      }
+
+
+      .secondary-content {
+      text-align: center;
+      padding-bottom: 100px;
+      }
+
+      .secondary-content ul li{
+      display: inline;
+      }
+
+      /*----about----*/
+
+      .about {
+      font-family: 'Bree Serif', serif;
+      font-size: 1em;
+      font-style: normal;
+
+      }
+
+      .about h3{
+      font-size: 1.5em;
+      }
+
+      .about p{
+      padding: 20px;
+      }
+
+      .about img{
+      padding: 50px 20px;
+      width: 80%;
+      margin-left:5%;
+      }
+
+      /*----terms,privacy----*/
+
+      .terms,
+      .privacy{
+      font-family: 'Bree Serif', serif;
+      }
+
+      .terms h3,
+      .privacy h3{
+      font-size: 1.5em;
+      font-family: 'Bree Serif', serif;
+      font-style: normal;
+      }
+
+      .headline-terms,
+      .headline-privacy {
+      font-size:1em;
+      font-family: 'Bree Serif', serif;
+      font-style: normal;
+      }
+
+      /*----login-signup dual site----*/
+
+      .login-signup h3{
+      font-family: 'Bree Serif', serif;
+      font-size: 1em;
+      font-style: normal;
+      }
+
+      .login-left {
+      width: 45%;
+      display: inline-block;
+      overflow: hidden;
+      margin: 10px;
+      }
+
+      #login-box {
+      width: 100%;
+      height: 310px;
+      background-color: #E7E7E7;
+      padding:20px;
+      margin-bottom: 85px;
+      }
+
+      #input-name,
+      #input-firstname{
+      padding: 10px;
+      height: 23px;
+      width: 75%;
+      background-color: white;
+      font: normal 15px'Bree Serif', serif;
+      display: block;
+      border: 2px solid #474747;
+      border-radius: 5px;
+      }
+
+      #input-password-left,
+      #input-surname,
+      #input-email,
+      #input-password-right,
+      #input-password-retype{
+      margin-top: 10px;
+      padding: 10px;
+      height: 23px;
+      width: 75%;
+      border: 0;
+      background-color: white;
+      font: normal 15px'Bree Serif', serif;
+      display: block;
+      border: 2px solid #474747;
+      border-radius: 5px;
+      } 
+
+      .signup-right {
+      width: 45%;
+      display: inline-block;
+      overflow: hidden;
+      margin: 10px;
+      }
+
+      #signup-box {
+      width: 100%;
+      height: 310px;
+      background-color: #E7E7E7;
+      display: inline-block;
+      padding: 20px;
+      margin-bottom: 85px;
+      }
+
+      #signup-submit,
+      #login-submit {
+      width: 90px;
+      height: 35px;
+      background-color: #FF5733;
+      color: white;
+      font: normal 15px'Bree Serif', serif;
+      float: right;
+        margin: 7px 57px 0px 0px;
+        padding: 0;
+        cursor: pointer; 
+        border:0;
+      border-radius: 5px;
+      }
+
+      /*----inquiry/contribution forms---*/
+
+      .create-a-inquiry h3,
+      .create-a-contribution h3 {
+      font-family: 'Bree Serif', serif;
+      font-size: 1.5em;
+      font-style: bold;
+
+      margin-bottom:5px;
+      }
+
+      .create-a-inquiry h4,
+      .create-a-contribution h4 {
+      font-family: 'Bree Serif', serif;
+      font-size: 1em;
+      font-style: normal;
+
+      margin-top: 0;
+      margin-bottom: 25px;
+      }
+
+      .create-a-inquiry,
+      .create-a-contribution {
+      width: 70%;
+      height: 630px;
+      background-color: #E7E7E7;
+      padding:20px;
+      padding-top:10px;
+      margin-bottom: 85px;
+      margin-top: 20px;
+      margin-left: 10%;
+
+      font: normal 15px'Bree Serif', serif;
+      }
+
+      #input-skills-needed,
+      #input-skills-offered{
+      margin-top: 10px;
+      padding: 10px;
+      height: 23px;
+      width: 75%;
+      border: 0;
+      background-color: white;
+      font: normal 15px'Bree Serif', serif;
+      display: block;
+      border: 2px solid #474747;
+      border-radius: 5px;
+      }
+
+      .input-date,
+      .input-start-time,
+      .input-end-time,
+      .input-number-persons {
+      margin-top: 10px;
+      padding: 10px;
+      height: 23px;
+      width: 75%;
+      border: 0;
+      background-color: white;
+      font: normal 15px'Bree Serif', serif;
+      display: block;
+      border: 2px solid #474747;
+      border-radius: 5px;
+
+      }
+
+      #inquiry-submit,
+      #contribution-submit {
+      width: 90px;
+      height: 35px;
+      background-color: #FF5733;
+      color: white;
+      font: normal 15px'Bree Serif', serif;
+      float: right;
+        margin: 7px 57px 0px 0px;
+        padding: 0;
+        cursor: pointer; 
+        border:0;
+      border-radius: 5px;
+      margin-top:15px;
+      }
+      /*----login----*/
+
+      .login h3 {
+      font-family: 'Bree Serif', serif;
+      font-size: 1.5em;
+      font-style: bold;
+
+      margin-bottom:25px;
+      }
+
+      #login-single-box{
+      width: 100%;
+      height: 170px;
+      background-color: #E7E7E7;
+      padding:20px;
+      margin-bottom: 85px;
+      }
+
+      /*----signup----*/
+
+      .signup h3{
+      font-family: 'Bree Serif', serif;
+      font-size: 1.5em;
+      font-style: bold;
+
+      margin-bottom:25px;
+      }
+
+      #signup-single-box{
+      width: 100%;
+      height: 320px;
+      background-color: #E7E7E7;
+      padding:20px;
+      margin-bottom: 85px;
+      }
+
+      /*----loggedin----*/
+
+      .user-board {
+      width:100%;
+      height: 500px;
+      background-color: #E7E7E7;
+      margin-bottom: 50px;
+      }
+
+      .active-contributions-inquiries{
+      width:100%;
+      }
+
+      #active-contributions,
+      #active-inquiries{
+      display:inline-block;
+      width: 50%;
+      height:50px;
+      background-color: #FFC300;
+      padding-top:20px;
+      padding-bottom:0px;
+
+      font-family: 'Bree Serif', serif;
+      font-size: 1em;
+      font-style: bold;
+      border: 1px solid #E9B81D;
+      }
+
+      #active-inquiries{
+      margin-left:-8px;
+      text-align: center;
+      }
+
+      #active-contributions{
+      text-align: center;
+      }
+
+
+      /**********************************
+      FOOTER
+      ***********************************/
+
+      #bottom-border {
+      border-top: 2px solid #474747;
+      padding: 0;
+      }
+
+      nav {
+      text-align: center;
+      }
+
+      nav ul li{
+      display: inline-block;
+      padding-right: 50px;
+      }
+
+      footer {
+      text-align: center;
+      padding-top: 50px;
+      font-family: 'Bree Serif', serif;
+      }
+
+      footer a{
+      padding: 5px
+      font-color: black;
+      font-family: 'Bree Serif', serif;
+      }
+  </style>
+    <header>
+      <div id="uxdev-container"></div>
+      <div class="main-header">
+        <h1> <a href="index.html"><img src="images/asandwhenlogo.png" alt="Logo"></a> As and When </h1>
+        <h2> </a> Contribute to community in your convenient time!</h2>
+      </div>
+          <div class="login-header">
+            <p> <a href="login.html"> Login </a> | <a href="signup.html"> Sign up </a> </p>
+          </div>   
+    </header>
+      <section>
+          <div class="find-contribution">
+            <a href="inquiry.html"><img src="images/find1.png" alt="Find icon">Find a contribution or inquiry </a>
+            </div>
+          <div class="create-contribution">
+            <a href="contribution.html"><img src="images/create1.png" alt="Create icon">Create a contribution or inquiry</a>
+          </div> 
+        <div class="wrapper">
+          <div class="search">
+           <form id="search-box" action="">
+              <input id="search-bar" type="text" placeholder="Search inquiries or contributions" required>
+              <button id="search-button" type="submit"><i class="material-icons">search</i></button>
+            </form>
+          </div>
+          <div class="secondary-content">
+            <ul>
+             <li><img src="images/help1.jpeg" alt="Helping hand"></li>
+             <li><img src="images/help5.jpg" alt="Helping hand"></li>
+             <li><img src="images/help3.jpg" alt="Helping hand"></li>
+             <li><img src="images/help4.jpg" alt="Helping hand"></li>
+             <li><img src="images/help2.jpg" alt="Helping hand"></li>
+             <li><img src="images/help6.jpg" alt="Helping hand"></li>
+             <li><img src="images/help7.png" alt="Helping hand"></li>
+             <li><img src="images/help8.jpg" alt="Helping hand"></li>
+             <li><img src="images/help9.jpg" alt="Helping hand"></li>
+            </ul>
+          </div> 
+        </div>
+        </section>
+      <footer id="bottom-border">
+          <nav>
+            <ul>
+              <li><a href="about.html">About us</a></li>
+              <li><a href="terms.html">Terms and conditions</a></li>
+              <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+            <ul>
+              <li><a href="http://twitter.com/theasandwhenfoundation"><img src="images/twitter.jpg" alt="Twitter Logo"></a></li>
+              <li><a href="http://facebook.com/theasandwhenfoundation"><img src="images/facebook.png" alt="Facebook Logo"></a></li>
+              <li><a href="http://linkedin.com/theasandwhenfoundation"><img src="images/linkedin.png" alt="Linkedin Logo"></a></li>
+              <li><a href="tel:+4417438293"><img src="images/phone.png" alt="Telephone: +44 0174732432"></a></li>
+              <li><a href="mailto:info@theasandwhenfoundation.co.uk"><img src="images/email.png" alt="info@theasandwhenfoundation.co.uk"></a></li>
+            </ul>
+          </nav> 
+        <p>&copy; 2017 The As and When Foundation</p>
+      </footer>
+    </div>
+  <script src="client.js"></script>
+  </body>
+</html>
